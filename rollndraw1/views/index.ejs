@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLL N DRAW</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+    
+</head>
+<body>
+    <header>
+        <h1>ROLL N DRAW</h1>
+        <h3>Тук ще намериш любимите си настолни игри!</h3>
+    </header>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Търси настолна игра...">
+    </div>
+
+    <main>
+        <div class="container">
+            <% products.forEach(product => { %>
+                <article class="product-card">
+                    <h2><%= product.name %></h2>
+                    <img src="/nastolni/<%= product.image %>" alt="<%= product.name %>">
+                    <p class="shortdescription"><%= product.shortDescription %></p>
+                    <p class="price">Цена: <%= product.price.toFixed(2).replace('.', ',') %> лв</p>
+                    <a href="/product/<%= product._id %>">
+                        <button>Виж повече</button>
+                    </a>
+                </article>
+            <% }); %>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ROLL N DRAW</p>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

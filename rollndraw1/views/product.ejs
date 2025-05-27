@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= product.name %> | ROLL N DRAW</title>
+    <link rel="stylesheet" href="/stylesheet.css" />
+</head>
+<body>
+    <header>
+        <h1>ROLL N DRAW</h1>
+        <nav>
+            <a href="/">Начало</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-details">
+            <h2><%= product.name %></h2>
+            <img src="/nastolni/<%= product.image %>" alt="<%= product.name %>" class="product-image">
+
+            <p class="short-description"><%= product.shortDescription %></p>
+
+            <h3>Описание:</h3>
+            <p class="full-description"><%= product.fullDescription %></p>
+
+            <p class="price">
+                <strong>Цена:</strong> <%= (product.price || 0).toFixed(2).replace('.', ',') %> лв.
+            </p>
+
+            <section class="purchase-form">
+                <h3>Поръчай сега</h3>
+                <form class="purchase-form">
+                    <label for="name">Име:</label><br />
+                    <input type="text" id="name" name="name" required /><br /><br />
+
+                    <label for="address">Адрес за доставка:</label><br />
+                    <textarea id="address" name="address" rows="3" required></textarea><br /><br />
+
+                    <button type="submit">Изпрати поръчка</button>
+                </form>
+            </section>
+
+            <section class="reviews">
+                <h3>Ревюта</h3>
+                <% if (reviews.length === 0) { %>
+                    <p>Все още няма ревюта за този продукт.</p>
+                <% } %>
+                <% reviews.forEach(review => { %>
+                    <article class="review">
+                        <p><strong><%= review.author %>:</strong> <%= review.comment %></p>
+                    </article>
+                <% }) %>
+
+                <h4>Добави ревю</h4>
+                <form class="reviews-form">
+                    <label for="author">Име (по избор):</label><br />
+                    <input type="text" id="author" name="author" placeholder="Анонимен" /><br /><br />
+
+                    <label for="comment">Твоето ревю:</label><br />
+                    <textarea id="comment" name="comment" rows="3" required></textarea><br /><br />
+
+                    <button type="submit">Изпрати ревю</button>
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ROLL N DRAW</p>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
+

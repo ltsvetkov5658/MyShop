@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Администрация - Продукти</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+    <header>
+        <h1>Администрация - Продукти</h1>
+        <nav>
+            <a href="/admin/products">Продукти</a> |
+            <a href="/admin/orders">Поръчки</a> |
+            <a href="/">Начало</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Добавяне на нов продукт</h2>
+        <form action="/admin/products" method="POST">
+            <label>Име:</label>
+            <input type="text" name="name" required>
+
+            <label>Снимка (име на файла):</label>
+            <input type="text" name="image" required>
+
+            <label>Кратко описание:</label>
+            <textarea name="shortDescription" rows="2"></textarea>
+
+            <label>Пълно описание:</label>
+            <textarea name="fullDescription" rows="4"></textarea>
+
+            <label>Цена (лв):</label>
+            <input type="number" step="0.01" name="price" required>
+
+            <button type="submit">Добави продукт</button>
+        </form>
+
+        <h2>Списък с продукти</h2>
+        <% if (products.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Име</th>
+                        <th>Цена</th>
+                        <th>Закупен</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td><%= product.name %></td>
+                            <td><%= product.price.toFixed(2).replace('.', ',') %> лв</td>
+                            <td><%= product.purchaseCount %> пъти</td>
+                            <td>
+                                <a href="/admin/products/<%= product._id %>/edit">Редактирай</a> |
+                                <form action="/admin/products/<%= product._id %>/delete" method="POST" style="display:inline;">
+                                    <button type="submit" onclick="return confirm('Сигурни ли сте, че искате да изтриете този продукт?')">Изтрий</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Няма добавени продукти.</p>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ROLL N DRAW</p>
+    </footer>
+</body>
+</html>

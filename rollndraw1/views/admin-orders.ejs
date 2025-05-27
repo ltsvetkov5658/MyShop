@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Администрация - Поръчки</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+    <header>
+        <h1>Администрация - Поръчки</h1>
+        <nav>
+            <a href="/admin/products">Продукти</a> |
+            <a href="/admin/orders">Поръчки</a> |
+            <a href="/">Начало</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Списък с поръчки</h2>
+
+        <% if (orders.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Игра</th>
+                        <th>Име на клиента</th>
+                        <th>Адрес за доставка</th>
+                        <th>Дата на поръчката</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% orders.forEach(order => { %>
+                        <tr>
+                            <td><%= order.product.name %></td>
+                            <td><%= order.name %></td>
+                            <td><%= order.address %></td>
+                            <td><%= order.createdAt.toLocaleDateString('bg-BG') %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Няма направени поръчки.</p>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ROLL N DRAW</p>
+    </footer>
+</body>
+</html>

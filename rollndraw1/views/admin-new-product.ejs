@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редакция на продукт</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<body>
+    <header>
+        <h1>Редакция на продукт</h1>
+        <nav>
+            <a href="/admin/products">Продукти</a> |
+            <a href="/admin/orders">Поръчки</a> |
+            <a href="/">Начало</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Редактирай продукта: <%= product.name %></h2>
+        <form action="/admin/products/<%= product._id %>/edit" method="POST">
+            <label>Име:</label>
+            <input type="text" name="name" value="<%= product.name %>" required>
+
+            <label>Снимка (име на файла):</label>
+            <input type="text" name="image" value="<%= product.image %>" required>
+
+            <label>Кратко описание:</label>
+            <textarea name="shortDescription" rows="2"><%= product.shortDescription %></textarea>
+
+            <label>Пълно описание:</label>
+            <textarea name="fullDescription" rows="4"><%= product.fullDescription %></textarea>
+
+            <label>Цена (лв):</label>
+            <input type="number" step="0.01" name="price" value="<%= product.price %>" required>
+
+            <button type="submit">Запази промените</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ROLL N DRAW</p>
+    </footer>
+</body>
+</html>
