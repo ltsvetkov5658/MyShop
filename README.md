@@ -1,6 +1,6 @@
 # Roll N Draw
 
-**Roll N Draw** is a full-stack web application built with **Node.js**, **Express**, **MongoDB**, and **EJS**. It allows users to browse a collection of products, view detailed information, place orders, and write reviews for each product. An admin panel is also available for managing products and viewing orders.
+**Roll N Draw** is built with **Node.js**, **Express**, **MongoDB**, and **EJS**. It allows users to browse a collection of products, view detailed information, place orders, and write reviews for each product. An admin panel is also available for managing products and viewing orders.
 
 ## Features
 
